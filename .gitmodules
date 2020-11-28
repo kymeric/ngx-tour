@@ -1,0 +1,18 @@
+[submodule "projects/ngx-tour-console"]
+	path = projects/ngx-tour-console
+	url = https://github.com/alvaro-octal/ngx-tour-console.git
+[submodule "projects/ngx-tour-core"]
+	path = projects/ngx-tour-core
+	url = https://github.com/alvaro-octal/ngx-tour-core.git
+[submodule "projects/ngx-tour-md-menu"]
+	path = projects/ngx-tour-md-menu
+	url = https://github.com/alvaro-octal/ngx-tour-md-menu.git
+[submodule "projects/ngx-tour-ng-bootstrap"]
+	path = projects/ngx-tour-ng-bootstrap
+	url = https://github.com/alvaro-octal/ngx-tour-ng-bootstrap.git
+[submodule "projects/ngx-tour-ngx-bootstrap"]
+	path = projects/ngx-tour-ngx-bootstrap
+	url = https://github.com/alvaro-octal/ngx-tour-ngx-bootstrap.git
+[submodule "projects/ngx-tour-ngx-popper"]
+	path = projects/ngx-tour-ngx-popper
+	url = https://github.com/alvaro-octal/ngx-tour-ngx-popper.git
