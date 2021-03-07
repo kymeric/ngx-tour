@@ -1,4 +1,4 @@
-import { TourService, IStepOption } from 'ngx-tour-ng-bootstrap';
+import { TourService, IStepOption } from '@ngx-tour/ng-bootstrap';
 import { Component } from '@angular/core';
 
 @Component({

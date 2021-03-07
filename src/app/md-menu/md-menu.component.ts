@@ -1,4 +1,4 @@
-import { TourService } from 'ngx-tour-md-menu';
+import { TourService } from '@ngx-tour/md-menu';
 import { Component } from '@angular/core';
 
 @Component({

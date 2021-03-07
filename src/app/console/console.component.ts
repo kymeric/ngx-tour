@@ -1,4 +1,4 @@
-import { TourService } from 'ngx-tour-console';
+import { TourService } from '@ngx-tour/console';
 import { Component } from '@angular/core';
 
 @Component({

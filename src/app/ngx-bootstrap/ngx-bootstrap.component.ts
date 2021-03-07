@@ -1,4 +1,4 @@
-import { TourService } from 'ngx-tour-ngx-bootstrap';
+import { TourService } from '@ngx-tour/ngx-bootstrap';
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
