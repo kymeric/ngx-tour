@@ -11,7 +11,7 @@ This is a product tour library built with Angular. It's inspired by [angular-ui-
 
 To try out the demo with the latest version of the different implementations:
 
-``bash
+```bash
 npm install
 npm run build:lib:all
 npm run link:lib:all
