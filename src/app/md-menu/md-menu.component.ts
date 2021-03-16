@@ -71,6 +71,5 @@ export class MdMenuComponent {
     }], {
       route: 'md-menu',
     });
-    this.tourService.start();
   }
 }

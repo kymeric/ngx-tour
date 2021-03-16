@@ -77,6 +77,5 @@ export class ConsoleComponent {
     }], {
       route: 'console',
     });
-    this.tourService.start();
   }
 }

@@ -112,6 +112,5 @@ export class NgxBootstrapComponent {
         route: 'ngx-bootstrap'
       }
     );
-    this.tourService.start();
   }
 }

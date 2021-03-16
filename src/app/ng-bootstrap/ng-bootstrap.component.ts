@@ -127,6 +127,5 @@ export class NgBootstrapComponent {
       route: 'ng-bootstrap',
     }
   );
-    this.tourService.start();
   }
 }
