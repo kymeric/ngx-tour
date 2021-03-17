@@ -32,6 +32,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
       loadChildren: () => import('./md-menu/md-menu.module').then(m => m.MdMenuModule),
       path: 'md-menu',
     }, {
+      loadChildren: () => import('./ngx-popper/ngx-popper.module').then(m => m.NgxPopperModule),
+      path: 'ngx-popper',
+    }, {
       redirectTo: '',
       path: '**',
     }]),
