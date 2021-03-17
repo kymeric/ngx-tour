@@ -14,11 +14,6 @@ export class MdMenuComponent {
       placement: 'below',
       title: 'Welcome',
     }, {
-      anchorId: 'angular-ui-tour',
-      content: 'Thanks to angular-ui-tour for the inspiration for the library',
-      route: '',
-      title: 'angular-ui-tour',
-    }, {
       anchorId: 'installation',
       content: 'First, install the library...',
       title: 'Installation',
@@ -46,7 +41,7 @@ export class MdMenuComponent {
     }, {
       anchorId: 'another.route',
       content: 'Like this!',
-      route: 'other',
+      route: 'md-menu/other',
       title: 'Another Route',
     }, {
       anchorId: 'config.route',

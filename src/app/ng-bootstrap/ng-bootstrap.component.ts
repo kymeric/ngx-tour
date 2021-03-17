@@ -15,10 +15,6 @@ export class NgBootstrapComponent {
       placement: 'bottom',
       title: 'Welcome',
     }, {
-      anchorId: 'angular-ui-tour',
-      content: 'Thanks to angular-ui-tour for the inspiration for the library',
-      title: 'angular-ui-tour',
-    }, {
       anchorId: 'installation',
       content: 'First, install the library...',
       title: 'Installation',

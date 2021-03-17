@@ -14,6 +14,9 @@ import { OverlayModule } from '@angular/cdk/overlay';
     BrowserModule,
     OverlayModule,
     RouterModule.forRoot([{
+      loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
+      path: '',
+    }, {
       loadChildren: () => import('./md-menu/mat-lazy-tour/app.module').then(m => m.AppModule),
       path: 'mat-lazy-tour',
     }, {
@@ -27,7 +30,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
       path: 'console',
     }, {
       loadChildren: () => import('./md-menu/md-menu.module').then(m => m.MdMenuModule),
-      path: '',
+      path: 'md-menu',
     }, {
       redirectTo: '',
       path: '**',

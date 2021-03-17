@@ -1,13 +1,13 @@
-<a
-  style="cursor: pointer"
-  (click)="tourService.toggle()"
-  class="btn btn-primary"
-  tourAnchor="start.tour"
-  >Start Demo Tour</a
->
+<h1>@ngx-tour/md-menu</h1>
+<p>
+  <code>TourMatMenuModule</code> is an implementation of the tour ui that uses
+  <a href="http://material.angular.io">Angular Material</a> MatMenu to display tour steps.
+</p>
+
+<h2>Demo</h2>
+
+<button (click)="tourService.toggle()" class="btn btn-primary" tourAnchor="start.tour">Start Demo Tour</button>
 
 <router-outlet></router-outlet>
+
 <tour-step-template> </tour-step-template>
-<ng-template #jsonTemplate let-step="step">
-  {{ step | json }}
-</ng-template>

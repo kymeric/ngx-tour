@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-tour": {
+    "@ngx-tour": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",

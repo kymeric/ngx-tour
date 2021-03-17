@@ -1,6 +1,14 @@
-<a style="cursor: pointer" (click)="tourService.toggle()" class="btn btn-primary" tourAnchor="start.tour">Start Demo Tour</a>
-<a style="cursor: pointer" (click)="tourService.prev()" class="btn btn-default">Prev</a>
-<a style="cursor: pointer" (click)="tourService.next()" class="btn btn-default">Next</a>
+<h1>@ngx-tour/console</h1>
+<p>
+  <code>TourConsoleModule</code> is a minimal implementation of the tour ui that uses only the browser's console to display tour steps.
+</p>
+
+<h2>Demo</h2>
+
+<button (click)="tourService.toggle()" class="btn btn-primary" tourAnchor="start.tour">Start Demo Tour</button>&nbsp;
+<button (click)="tourService.prev()" class="btn btn-secondary">Prev</button>&nbsp;
+<button (click)="tourService.next()" class="btn btn-secondary">Next</button>
 
 <router-outlet></router-outlet>
+
 <tour-hotkey-listener></tour-hotkey-listener>
