@@ -1,4 +1,4 @@
-<h2 tourAnchor="installation">Installation</h2>
+<h2 id="installation" tourAnchor="installation">Installation</h2>
 <ol>
   <li>
     <code>npm install @ngx-tour/core @ngx-tour/console</code>
@@ -7,7 +7,7 @@
     <code>TourConsoleModule.forRoot()</code> into your app module</li>
 </ol>
 
-<h2 tourAnchor="usage">Usage</h2>
+<h2 id="usage" tourAnchor="usage">Usage</h2>
 <ol>
   <li>
     Define anchor points for the tour steps by adding the
@@ -35,7 +35,7 @@ this.tourService.initialize([{{ '{' }}
     <a href="https://github.com/alvaro-octal/ngx-tour/tree/master/src/app/console">demo source code</a> for an example.</li>
 </ol>
 
-<h2>TourService</h2>
+<h2 id="tourservice">TourService</h2>
 <p>The
   <code>TourService</code> controls the tour. Some key functions include:</p>
 <dl>
@@ -55,7 +55,7 @@ this.tourService.initialize([{{ '{' }}
   <dd>Goes to the previous step</dd>
 </dl>
 
-<h2>Step Configuration</h2>
+<h2 id="step-configuration">Step Configuration</h2>
 <p>Each step can have the following properties.</p>
 <table class="table">
   <thead>
@@ -136,7 +136,7 @@ this.tourService.initialize([{{ '{' }}
   </tbody>
 </table>
 
-<h2>Defaults</h2>
+<h2 id="defaults">Defaults</h2>
 <p>You can set default values in the
   <code>TourService.initialize</code> function.</p>
 <pre>
@@ -148,7 +148,7 @@ this.tourService.initialize(steps, {{ '{' }}
 </pre>
 <p>Any value explicitly defined in a step will override the default value.</p>
 
-<h2 tourAnchor="hotkeys">Hotkeys</h2>
+<h2 id="hotkeys" tourAnchor="hotkeys">Hotkeys</h2>
 <p>
   Hotkeys are provided using Angular's
   <code>@HostListener</code> decorator. Hotkeys are enabled when the tour starts and disabled when the tour ends.
@@ -173,7 +173,7 @@ this.tourService.initialize(steps, {{ '{' }}
   <code>tourService.enableHotkeys()</code>
 </p>
 
-<h2 tourAnchor="events">Event Observables</h2>
+<h2 id="event-observables" tourAnchor="events">Event Observables</h2>
 <p>The
   <code>TourService</code> emits events that can be subscribed to like this:</p>
 <pre>
