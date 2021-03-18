@@ -13,7 +13,9 @@
         <h1>@ngx-tour/ngx-popper</h1>
 
         <h2 id="demo">Demo</h2>
+        <a style="cursor: pointer" (click)="tourService.toggle()" class="btn btn-primary" tourAnchor="start.tour">Start Demo Tour</a>
 
         <router-outlet></router-outlet>
+        <tour-step-template></tour-step-template>
     </main>
 </div>
