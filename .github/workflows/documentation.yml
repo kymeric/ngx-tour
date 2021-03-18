@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run build
+      - run: npm run pub
       - name: Documentation
         uses: peaceiris/actions-gh-pages@v3
         with:

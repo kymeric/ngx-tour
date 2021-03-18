@@ -35,7 +35,7 @@
         "e2e": "ng e2e",
         "upgrade": "ncu -u -x typescript,rxjs",
         "pub": "npm run pub:demo",
-        "pub:demo": "npm run build -- --base-href /ngx-tour/ && gh-pages -d dist/app"
+        "pub:demo": "npm run build -- --base-href /ngx-tour/"
     },
     "dependencies": {
         "@angular/animations": "~11.2.5",
