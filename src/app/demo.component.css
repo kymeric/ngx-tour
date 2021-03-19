@@ -19,7 +19,7 @@ header.navbar {
 
 @media only screen and (max-width: 768px) {
     .github-link {
-        top: 102px;
+        top: 106px;
         width: 60px;
         height: 60px;
     }
