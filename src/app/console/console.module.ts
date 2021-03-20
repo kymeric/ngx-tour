@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TourConsoleModule } from '@ngx-tour/console';
+import { HighlightModule } from 'ngx-highlightjs';
 
 import { ConsoleComponent } from './console.component';
 import { DocsComponent } from './docs.component';
@@ -11,6 +12,8 @@ import { OtherRouteComponent } from './other-route.component';
   declarations: [ConsoleComponent, DocsComponent, OtherRouteComponent],
   imports: [
     CommonModule,
+    HighlightModule,
+    TourConsoleModule.forRoot(),
     RouterModule.forChild([{
       component: ConsoleComponent,
       path: '',
@@ -22,7 +25,6 @@ import { OtherRouteComponent } from './other-route.component';
         path: 'other',
       }]
     }]),
-    TourConsoleModule.forRoot(),
   ],
 })
 export class ConsoleModule { }

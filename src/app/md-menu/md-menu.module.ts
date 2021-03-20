@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TourMatMenuModule } from '@ngx-tour/md-menu';
+import { HighlightModule } from 'ngx-highlightjs';
 
 import { DocsComponent } from './docs.component';
 import { MdMenuComponent } from './md-menu.component';
@@ -11,6 +12,7 @@ import { OtherRouteComponent } from './other-route.component';
   declarations: [MdMenuComponent, DocsComponent, OtherRouteComponent],
   imports: [
     CommonModule,
+    HighlightModule,
     TourMatMenuModule.forRoot(),
     RouterModule.forChild([{
       component: MdMenuComponent,

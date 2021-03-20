@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { RouterModule } from '@angular/router';
 
 import { DemoComponent } from './demo.component';
 import { OverlayModule } from '@angular/cdk/overlay';
+
 
 @NgModule({
   bootstrap: [DemoComponent],
@@ -13,6 +15,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
     BrowserAnimationsModule,
     BrowserModule,
     OverlayModule,
+    HighlightModule,
     RouterModule.forRoot([{
       loadChildren: () => import('./home/home.module').then(m => m.HomeModule),
       path: '',
@@ -41,6 +44,19 @@ import { OverlayModule } from '@angular/cdk/overlay';
       useHash: false,
       anchorScrolling: 'enabled',
     }),
+  ],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        coreLibraryLoader: () => import('highlight.js/lib/core'),
+        languages: {
+          typescript: () => import('highlight.js/lib/languages/typescript'),
+          bash: () => import('highlight.js/lib/languages/bash'),
+          xml: () => import('highlight.js/lib/languages/xml'),
+        }
+      }
+    }
   ],
 })
 export class DemoModule { }
