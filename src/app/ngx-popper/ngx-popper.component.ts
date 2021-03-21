@@ -14,11 +14,6 @@ export class NgxPopperComponent {
       placement: 'right',
       title: 'Welcome',
     }, {
-      anchorId: 'angular-ui-tour',
-      content: 'Thanks to angular-ui-tour for the inspiration for the library',
-      placement: 'bottom',
-      title: 'angular-ui-tour',
-    }, {
       anchorId: 'usage',
       content: '...then use it.',
       placement: 'right',

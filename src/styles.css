@@ -54,3 +54,12 @@ code.hljs {
     border-radius: 4px;
     padding: 1em;
 }
+
+td.label-cell {
+    width: 25%;
+}
+
+td.content-cell > .meta {
+    font-size: .8em;
+    margin-bottom: 1rem;
+}

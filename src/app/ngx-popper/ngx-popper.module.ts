@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { TourNgxPopperModule } from '@ngx-tour/ngx-popper';
 import { NgxPopperjsModule } from 'ngx-popperjs';
 import { HighlightModule } from 'ngx-highlightjs';
+import { UtilModule } from '../util/util.module';
 
 import { DocsComponent } from './docs.component';
 import { NgxPopperComponent } from './ngx-popper.component';
@@ -15,6 +16,7 @@ import { OtherRouteComponent } from './other-route.component';
     CommonModule,
     NgxPopperjsModule,
     HighlightModule,
+    UtilModule,
     TourNgxPopperModule.forRoot(),
     RouterModule.forChild([{
       component: NgxPopperComponent,

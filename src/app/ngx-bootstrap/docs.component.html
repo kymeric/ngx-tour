@@ -39,132 +39,41 @@
 <h2 id="tourservice">TourService</h2>
 <p>The
   <code>TourService</code> controls the tour. Some key functions include:</p>
-<dl>
-  <dt>start()</dt>
-  <dd>Starts the tour</dd>
-  <dt>startAt(stepId: number | string)</dt>
-  <dd>Start the tour at the step with stepId or at the specified index</dd>
-  <dt>end()</dt>
-  <dd>Ends the tour</dd>
-  <dt>pause()</dt>
-  <dd>Pauses the tour</dd>
-  <dt>resume()</dt>
-  <dd>Resumes the tour</dd>
-  <dt>next()</dt>
-  <dd>Goes to the next step</dd>
-  <dt>prev()</dt>
-  <dd>Goes to the previous step</dd>
-</dl>
+  <table class="table table-sm">
+    <tr *ngFor="let method of tourServiceMethods">
+        <td class="label-cell"><code>{{method.key}}</code></td>
+        <td class="content-cell">
+            <p class="signature">
+                <code [innerHTML]="method.description | keepHtml"></code>
+                <small class="text-muted"> =&gt; {{method.return_type}}</small>
+            </p>
+            <p class="description">{{method.description}}</p>
+        </td>
+    </tr>
+  </table>
 
 <h2 id="step-configuration">Step Configuration</h2>
 <p>Each step can have the following properties.</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Default</th>
-      <th>Description</th>
+<table class="table table-sm">
+  <ng-container *ngFor="let prop of stepConfigProperties">
+    <tr [tourAnchor]="prop.anchor">
+        <td class="label-cell">
+            <ng-container *ngIf="prop.del"><del><code>{{prop.name}}</code></del></ng-container>
+            <ng-container *ngIf="!prop.del"><code>{{prop.name}}</code></ng-container>
+        </td>
+        <td class="content-cell">
+            <p class="description" [innerHTML]="prop.description | keepHtml"></p>
+            <div class="meta">
+                <i>Type: </i>
+                <code>{{prop.prop_type}}</code>
+            </div>
+            <div class="meta" *ngIf="prop.default_value">
+                <i>Default: </i>
+                <code>{{prop.default_value}}</code>
+            </div>
+        </td>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>stepId</td>
-      <td>string</td>
-      <td>""</td>
-      <td>A unique identifier for the step</td>
-    </tr>
-    <tr tourAnchor="config.anchorId">
-      <td>anchorId</td>
-      <td>string</td>
-      <td>required</td>
-      <td>The anchor to which the step will be attached</td>
-    </tr>
-    <tr>
-      <td>title</td>
-      <td>string</td>
-      <td>""</td>
-      <td>The title of the tour step</td>
-    </tr>
-    <tr>
-      <td>content</td>
-      <td>string</td>
-      <td>""</td>
-      <td>The content text of the tour step</td>
-    </tr>
-    <tr tourAnchor="config.route">
-      <td>route</td>
-      <td>string | UrlSegment[]</td>
-      <td>undefined</td>
-      <td>
-        The route to which the tour should navigate before attempting to show this tour step. If undefined, no navigation is attempted.
-      </td>
-    </tr>
-    <tr tourAnchor="config.nextStep">
-      <td>nextStep</td>
-      <td>number | string</td>
-      <td>undefined</td>
-      <td>The step index or stepId of the next step. If undefined, the next step in the steps array is used.</td>
-    </tr>
-    <tr>
-      <td>prevStep</td>
-      <td>number | string</td>
-      <td>undefined</td>
-      <td>The step index or stepId of the previous step. If undefined, the previous step in the steps array is used.</td>
-    </tr>
-    <tr>
-      <td>placement</td>
-      <td>'top' | 'bottom' | 'left' | 'right' | 'auto'</td>
-      <td>
-        <span tourAnchor="config.placement.default">'top'</span>
-      </td>
-      <td>
-        Placement of a popover. See the
-        <a href="https://valor-software.com/ngx-bootstrap/index-bs4.html#/popover#popover-directive">ngx-bootstrap docs</a>.
-      </td>
-    </tr>
-    <tr tourAnchor="config.containerClass">
-      <td>containerClass</td>
-      <td>string</td>
-      <td>""</td>
-      <td>
-        Custom CSS class for popover container. It helps when you want to add custom style only for tour step popovers.
-      </td>
-    </tr>
-    <tr>
-      <td>preventScrolling</td>
-      <td>boolean</td>
-      <td>false</td>
-      <td>
-        Tour steps automatically scroll to the middle of the screen, if they are off the screen when shown. Setting this value to
-        true will disable the scroll behavior.
-      </td>
-    </tr>
-    <tr tourAnchor="config.buttons.custom">
-      <td>prevBtnTitle</td>
-      <td>string</td>
-      <td>false</td>
-      <td>
-        Sets a custom prev button title for a given step. Default is "Prev"
-      </td>
-    </tr>
-    <tr>
-      <td>nextBtnTitle</td>
-      <td>string</td>
-      <td>false</td>
-      <td>
-        Sets a custom next button title for a given step. Default is "Next"
-      </td>
-    </tr>
-    <tr>
-      <td>endBtnTitle</td>
-      <td>string</td>
-      <td>false</td>
-      <td>
-        Sets a custom end button title for a given step. Default is "End"
-      </td>
-    </tr>
-  </tbody>
+  </ng-container>
 </table>
 
 <h2 id="defaults">Defaults</h2>
@@ -202,61 +111,21 @@
 <p>The
   <code>TourService</code> emits events that can be subscribed to like this:</p>
 <pre><code [highlight]="codeEventObservables" [languages]="['typescript']"></code></pre>
-<table class="table">
-  <thead>
+<table class="table table-sm">
+  <ng-container *ngFor="let prop of eventObservables">
     <tr>
-      <th>Name</th>
-      <th>Payload</th>
-      <th>Emitted When</th>
+        <td class="label-cell">
+            <code>{{prop.name}}</code>
+        </td>
+        <td class="content-cell">
+            <p class="description" [innerHTML]="prop.description | keepHtml"></p>
+            <div class="meta">
+                <i>Payload: </i>
+                <code>{{prop.payload}}</code>
+            </div>
+        </td>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>stepShow$</td>
-      <td>IStepOption</td>
-      <td>A step is shown</td>
-    </tr>
-    <tr>
-      <td>stepHide$</td>
-      <td>IStepOption</td>
-      <td>A step is hidden</td>
-    </tr>
-    <tr>
-      <td>initialize$</td>
-      <td>IStepOption[]</td>
-      <td>The tour is configured with a set of steps</td>
-    </tr>
-    <tr>
-      <td>start$</td>
-      <td>IStepOption</td>
-      <td>The tour begins</td>
-    </tr>
-    <tr>
-      <td>end$</td>
-      <td>any</td>
-      <td>The tour ends</td>
-    </tr>
-    <tr>
-      <td>pause$</td>
-      <td>IStepOption</td>
-      <td>The tour is paused</td>
-    </tr>
-    <tr>
-      <td>resume$</td>
-      <td>IStepOption</td>
-      <td>The tour resumes</td>
-    </tr>
-    <tr>
-      <td>anchorRegister$</td>
-      <td>string</td>
-      <td>An anchor is registered with the tour</td>
-    </tr>
-    <tr>
-      <td>anchorUnregister$</td>
-      <td>string</td>
-      <td>An anchor is unregistered from the tour</td>
-    </tr>
-  </tbody>
+  </ng-container>
 </table>
 
 <h2 id="custom-template" tourAnchor="template">Custom template</h2>

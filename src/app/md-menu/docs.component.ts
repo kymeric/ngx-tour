@@ -76,7 +76,7 @@ export class DocsComponent {
     ];
 
     eventObservables = [
-        new Event('initialize$', 'IStepOption[]', 'The tour is initialized'),
+        new Event('initialize$', 'IStepOption[]', 'The tour is configured with a set of steps'),
         new Event('stepShow$', 'IStepOption', 'A step is shown'),
         new Event('stepHide$', 'IStepOption', 'A step is hidden'),
         new Event('start$', 'IStepOption', 'The tour begins'),

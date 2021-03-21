@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TourNgxBootstrapModule } from '@ngx-tour/ngx-bootstrap';
 import { HighlightModule } from 'ngx-highlightjs';
+import { UtilModule } from '../util/util.module';
 
 import { DocsComponent } from './docs.component';
 import { NgxBootstrapComponent } from './ngx-bootstrap.component';
@@ -13,6 +14,7 @@ import { OtherRouteComponent } from './other-route.component';
   imports: [
     CommonModule,
     HighlightModule,
+    UtilModule,
     TourNgxBootstrapModule.forRoot(),
     RouterModule.forChild([{
       component: NgxBootstrapComponent,
