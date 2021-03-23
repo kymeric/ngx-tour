@@ -39,13 +39,13 @@ export class DocsComponent {
     <p class="ngxp-title">{{ step?.title }}</p>
     <p class="ngxp-content">{{ step?.content }}</p>
     <div class="tour-step-navigation">
-      <button [hidden]="!tourService.hasPrev(step)" class="ngxp-btn btn-prev" (click)="tourService.prev()">
-        « {{ step?.prevBtnTitle }}
-      </button>
-      <button [hidden]="!tourService.hasNext(step)" class="ngxp-btn btn-next" (click)="tourService.next()">
-        {{ step?.nextBtnTitle }} »
-      </button>
-      <button class="ngxp-btn btn-end" (click)="tourService.end()">
+      <button [hidden]="!tourService.hasPrev(step)" class="btn btn-sm btn-primary" (click)="tourService.prev()">
+        {{ step?.prevBtnTitle }}
+      </button>&nbsp;
+      <button [hidden]="!tourService.hasNext(step)" class="btn btn-sm btn-primary" (click)="tourService.next()">
+        {{ step?.nextBtnTitle }}
+      </button>&nbsp;
+      <button class="btn btn-sm btn-primary" (click)="tourService.end()">
         {{ step?.endBtnTitle }}
       </button>
     </div>

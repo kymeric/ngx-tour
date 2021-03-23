@@ -1153,10 +1153,10 @@
     "tslib" "^2.1.0"
     "withinviewport" "^2.1.2"
 
-"@ngx-tour/ngx-popper@^11.0.4":
-  "integrity" "sha512-evs+cYWZ5Eg1DYOLV6HWqLZ4vpysPvCN2CO1gTkhvi1XZrm/98C9jQ1pU+RdiHNWshLW5npyYwjVyaJyIO9r4g=="
-  "resolved" "https://registry.npmjs.org/@ngx-tour/ngx-popper/-/ngx-popper-11.0.4.tgz"
-  "version" "11.0.4"
+"@ngx-tour/ngx-popper@^11.1.0":
+  "integrity" "sha512-TRJBBIly/ey1fJuSzXsxX5DbfPtZ9bIc7zKAr1WyLD21ZlUVTsZwR5BvyDQZKEGRws09WFWHiv13XOqBqnc54A=="
+  "resolved" "https://registry.npmjs.org/@ngx-tour/ngx-popper/-/ngx-popper-11.1.0.tgz"
+  "version" "11.1.0"
   dependencies:
     "tslib" "^2.1.0"
     "withinviewport" "^2.1.2"
