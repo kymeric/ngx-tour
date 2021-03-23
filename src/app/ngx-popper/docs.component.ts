@@ -12,30 +12,42 @@ import { Event } from './../util/models/event.model';
 export class DocsComponent {
     codeInstall = `npm install @ngx-tour/core @ngx-tour/ngx-popper ngx-popperjs`;
     codeTourAnchor = `<div tourAnchor="some.anchor.id">...</div>`;
-    codeInitialize = `this.tourService.initialize([{{ '{' }}
+    codeInitialize = `this.tourService.initialize([{
   anchorId: 'some.anchor.id',
   content: 'Some content',
   title: 'First',
-}, {{ '{' }}
+}, {
   anchorId: 'another.anchor.id',
   content: 'Other content',
   title: 'Second',
 }]);`;
-    codeInitializeDefaults = `this.tourService.initialize(steps, {{ '{' }}
+    codeInitializeDefaults = `this.tourService.initialize(steps, {
   route: '',
   placement: 'left',
   preventScrolling: true,
 });`;
-    codeEventObservables = `this.tourService.initialize$.subscribe((steps: IStepOption[]) => {{ '{' }}
+    codeEventObservables = `this.tourService.initialize$.subscribe((steps: IStepOption[]) => {
   console.log('tour configured with these steps:', steps);
 });`;
     codeTemplate = `<tour-step-template>
-  <ng-template let-step="step">
-    <p class="tour-step-content">{{ '{{' }}step?.content}}</p>
+  <popper-content class="popper-content">
+    <ng-container *ngTemplateOutlet="stepTemplate || stepTemplateContent || defaultTemplate;context: { step: step }">
+    </ng-container>
+  </popper-content>
+
+  <ng-template #defaultTemplate let-step="step">
+    <p class="ngxp-title">{{ step?.title }}</p>
+    <p class="ngxp-content">{{ step?.content }}</p>
     <div class="tour-step-navigation">
-      <button *ngIf="tourService.hasPrev(step)" class="btn btn-sm btn-default" (click)="tourService.prev()">« {{ '{{' }}step?.prevBtnTitle}}</button>
-      <button *ngIf="tourService.hasNext(step)" class="btn btn-sm btn-default" (click)="tourService.next()">{{ '{{' }}step?.nextBtnTitle}} »</button>
-      <button class="btn btn-sm btn-default" (click)="tourService.end()">{{ '{{' }}step?.endBtnTitle}}</button>
+      <button [hidden]="!tourService.hasPrev(step)" class="ngxp-btn btn-prev" (click)="tourService.prev()">
+        « {{ step?.prevBtnTitle }}
+      </button>
+      <button [hidden]="!tourService.hasNext(step)" class="ngxp-btn btn-next" (click)="tourService.next()">
+        {{ step?.nextBtnTitle }} »
+      </button>
+      <button class="ngxp-btn btn-end" (click)="tourService.end()">
+        {{ step?.endBtnTitle }}
+      </button>
     </div>
   </ng-template>
 </tour-step-template>`;

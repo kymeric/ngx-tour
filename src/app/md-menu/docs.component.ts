@@ -12,20 +12,20 @@ import { Event } from './../util/models/event.model';
 export class DocsComponent {
     codeInstall = `npm install @ngx-tour/core @ngx-tour/md-menu @angular/animations @angular/cdk @angular/http @angular/material`;
     codeTourAnchor = `<div tourAnchor="some.anchor.id">...</div>`;
-    codeInitialize = `this.tourService.initialize([{{ '{' }}
+    codeInitialize = `this.tourService.initialize([{
   anchorId: 'some.anchor.id',
   content: 'Some content',
   title: 'First',
-}, {{ '{' }}
+}, {
   anchorId: 'another.anchor.id',
   content: 'Other content',
   title: 'Second',
 }]);`;
-    codeInitializeDefaults = `this.tourService.initialize(steps, {{ '{' }}
+    codeInitializeDefaults = `this.tourService.initialize(steps, {
   route: '',
   preventScrolling: true,
 });`;
-    codeEventObservables = `this.tourService.initialize$.subscribe((steps: IStepOption[]) => {{ '{' }}
+    codeEventObservables = `this.tourService.initialize$.subscribe((steps: IStepOption[]) => {
   console.log('tour configured with these steps:', steps);
 });`;
     codeTemplate = `<tour-step-template>
