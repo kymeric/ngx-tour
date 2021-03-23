@@ -52,7 +52,7 @@
         "@ngx-tour/console": "^11.0.4",
         "@ngx-tour/core": "^11.0.7",
         "@ngx-tour/md-menu": "^11.0.4",
-        "@ngx-tour/ng-bootstrap": "^11.0.4",
+        "@ngx-tour/ng-bootstrap": "^11.0.5",
         "@ngx-tour/ngx-bootstrap": "^11.0.4",
         "@ngx-tour/ngx-popper": "^11.0.4",
         "@popperjs/core": "~2.9.1",

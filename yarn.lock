@@ -1137,10 +1137,10 @@
     "tslib" "^2.1.0"
     "withinviewport" "^2.1.2"
 
-"@ngx-tour/ng-bootstrap@^11.0.4":
-  "integrity" "sha512-AmBSzHUeXxTd99GwWyWf4Ks7HnSr7axY/zbq0g9V3398/Nq+bWgAMDLuGOM0kfidCmqwwINASPx3ClYllPy2FA=="
-  "resolved" "https://registry.npmjs.org/@ngx-tour/ng-bootstrap/-/ng-bootstrap-11.0.4.tgz"
-  "version" "11.0.4"
+"@ngx-tour/ng-bootstrap@^11.0.5":
+  "integrity" "sha512-JAPxYxWtYXWmaNSYEiWBP5NZupK0GsBui5CrdNS5VeG1Vp6Mcg7y28vV3Q7O3+nQSbRejuxDxVspw9cN2ougYg=="
+  "resolved" "https://registry.npmjs.org/@ngx-tour/ng-bootstrap/-/ng-bootstrap-11.0.5.tgz"
+  "version" "11.0.5"
   dependencies:
     "tslib" "^2.1.0"
     "withinviewport" "^2.1.2"
