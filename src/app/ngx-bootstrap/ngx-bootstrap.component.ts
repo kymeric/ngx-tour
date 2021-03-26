@@ -1,5 +1,7 @@
 import { TourService } from '@ngx-tour/ngx-bootstrap';
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, OnDestroy } from '@angular/core';
+
+import { EventBrokerService, IEventListener } from './../util/services/event-broker.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,8 +10,10 @@ import { Component, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./ngx-bootstrap.component.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class NgxBootstrapComponent {
-  constructor(public tourService: TourService) {
+export class NgxBootstrapComponent implements OnDestroy {
+  private startTourListener: IEventListener;
+
+  constructor(public tourService: TourService, private eventBroker: EventBrokerService) {
     this.tourService.initialize(
       [
         {
@@ -103,7 +107,14 @@ export class NgxBootstrapComponent {
       ],
       {
         route: 'ngx-bootstrap'
-      }
-    );
+    });
+
+    this.startTourListener = this.eventBroker.listen<boolean>("start-tour",(value:boolean)=>{
+      this.tourService.start();
+    });
+  }
+
+  public ngOnDestroy() {
+    this.startTourListener.ignore();
   }
 }

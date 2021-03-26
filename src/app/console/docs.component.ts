@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { EventBrokerService } from './../util/services/event-broker.service';
+
 import { Method } from './../util/models/method.model';
 import { Property } from './../util/models/property.model';
 import { Event } from './../util/models/event.model';
@@ -63,4 +65,23 @@ export class DocsComponent {
         new Event('anchorRegister$', 'string', 'An anchor is registered with the tour'),
         new Event('anchorUnregister$', 'string', 'An anchor is unregistered from the tour'),
     ];
+
+    constructor(private eventBroker: EventBrokerService) {
+    }
+
+    scroll(el: HTMLElement) {
+        el.scrollIntoView();
+    }
+
+    startTour() {
+        this.eventBroker.emit<boolean>("start-tour", true);
+    }
+
+    nextStep() {
+        this.eventBroker.emit<boolean>("next-step", true);
+    }
+
+    prevStep() {
+        this.eventBroker.emit<boolean>("prev-step", true);
+    }
 }

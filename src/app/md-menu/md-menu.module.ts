@@ -10,23 +10,27 @@ import { MdMenuComponent } from './md-menu.component';
 import { OtherRouteComponent } from './other-route.component';
 
 @NgModule({
-  declarations: [MdMenuComponent, DocsComponent, OtherRouteComponent],
-  imports: [
-    CommonModule,
-    HighlightModule,
-    UtilModule,
-    TourMatMenuModule.forRoot(),
-    RouterModule.forChild([{
-      component: MdMenuComponent,
-      path: '',
-      children: [{
-        component: DocsComponent,
-        path: '',
-      }, {
-        component: OtherRouteComponent,
-        path: 'other',
-      }]
-    }]),
-  ],
+    declarations: [
+        MdMenuComponent,
+        DocsComponent,
+        OtherRouteComponent,
+    ],
+    imports: [
+        CommonModule,
+        HighlightModule,
+        UtilModule,
+        TourMatMenuModule.forRoot(),
+        RouterModule.forChild([{
+            component: MdMenuComponent,
+            path: '',
+            children: [{
+                component: DocsComponent,
+                path: '',
+            }, {
+                component: OtherRouteComponent,
+                path: 'other',
+            }]
+        }]),
+    ],
 })
 export class MdMenuModule { }

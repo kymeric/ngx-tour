@@ -1,13 +1,17 @@
 import { TourService } from '@ngx-tour/md-menu';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+
+import { EventBrokerService, IEventListener } from './../util/services/event-broker.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'md-menu-route',
   templateUrl: './md-menu.component.html',
 })
-export class MdMenuComponent {
-  constructor(public tourService: TourService) {
+export class MdMenuComponent implements OnDestroy {
+  private startTourListener: IEventListener;
+
+  constructor(public tourService: TourService, private eventBroker: EventBrokerService) {
     this.tourService.initialize([{
       anchorId: 'start.tour',
       content: 'Welcome to the Ngx-Tour tour!',
@@ -66,5 +70,13 @@ export class MdMenuComponent {
     }], {
       route: 'md-menu',
     });
+
+    this.startTourListener = this.eventBroker.listen<boolean>("start-tour",(value:boolean)=>{
+      this.tourService.start();
+    });
+  }
+
+  public ngOnDestroy() {
+    this.startTourListener.ignore();
   }
 }

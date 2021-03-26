@@ -1,14 +1,17 @@
-import { TourService, IStepOption } from '@ngx-tour/ng-bootstrap';
-import { Component } from '@angular/core';
+import { TourService } from '@ngx-tour/ng-bootstrap';
+import { Component, OnDestroy } from '@angular/core';
+
+import { EventBrokerService, IEventListener } from './../util/services/event-broker.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ng-bootstrap-route',
   templateUrl: './ng-bootstrap.component.html',
 })
-export class NgBootstrapComponent {
-  constructor(public tourService: TourService) {
-    this.tourService.events$.subscribe(console.log);
+export class NgBootstrapComponent implements OnDestroy {
+  private startTourListener: IEventListener;
+
+  constructor(public tourService: TourService, private eventBroker: EventBrokerService) {
     this.tourService.initialize([{
       anchorId: 'start.tour',
       content: 'Welcome to the Ngx-Tour tour!',
@@ -121,7 +124,14 @@ export class NgBootstrapComponent {
     }],
     {
       route: 'ng-bootstrap',
-    }
-  );
+    });
+
+    this.startTourListener = this.eventBroker.listen<boolean>("start-tour",(value:boolean)=>{
+      this.tourService.start();
+    });
+  }
+
+  public ngOnDestroy() {
+    this.startTourListener.ignore();
   }
 }

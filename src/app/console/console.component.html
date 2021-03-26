@@ -1,35 +1,3 @@
-<div class="row flex-xl-nowrap">
-    <div class="d-none d-xl-block col-xl-2"></div>
+<router-outlet></router-outlet>
 
-    <nav class="d-none d-xl-block col-xl-2 bd-toc">
-        <nav id="TableOfContents">
-            <ul>
-                <li><a routerLink="./" fragment="demo">Demo</a></li>
-                <li><a routerLink="./" fragment="installation">Installation</a></li>
-                <li><a routerLink="./" fragment="usage">Usage</a></li>
-                <li><a routerLink="./" fragment="tourservice">TourService</a></li>
-                <li><a routerLink="./" fragment="step-configuration">Step Configuration</a></li>
-                <li><a routerLink="./" fragment="defaults">Defaults</a></li>
-                <li><a routerLink="./" fragment="hotkeys">Hotkeys</a></li>
-                <li><a routerLink="./" fragment="event-observables">Event Observables</a></li>
-            </ul>
-        </nav>
-    </nav>
-
-    <main class="col-md-9 col-xl-8 py-md-3 pl-md-5">
-        <h1>@ngx-tour/console <a href="https://badge.fury.io/js/%40ngx-tour%2Fconsole"><img src="https://badge.fury.io/js/%40ngx-tour%2Fconsole.svg" alt="npm version" height="18"></a></h1>
-        <p>
-          <code>TourConsoleModule</code> is a minimal implementation of the tour ui that uses only the browser's console to display tour steps.
-        </p>
-
-        <h2 id="demo">Demo</h2>
-
-        <button (click)="tourService.toggle()" class="btn btn-primary" tourAnchor="start.tour">Start Demo Tour</button>&nbsp;
-        <button (click)="tourService.prev()" class="btn btn-secondary">Prev</button>&nbsp;
-        <button (click)="tourService.next()" class="btn btn-secondary">Next</button>
-
-        <router-outlet></router-outlet>
-
-        <tour-hotkey-listener></tour-hotkey-listener>
-    </main>
-</div>
+<tour-hotkey-listener></tour-hotkey-listener>

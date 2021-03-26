@@ -1,13 +1,19 @@
 import { TourService } from '@ngx-tour/console';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+
+import { EventBrokerService, IEventListener } from './../util/services/event-broker.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'console-route',
   templateUrl: './console.component.html',
 })
-export class ConsoleComponent {
-  constructor(public tourService: TourService) {
+export class ConsoleComponent implements OnDestroy {
+  private startTourListener: IEventListener;
+  private nextStepListener: IEventListener;
+  private prevStepListener: IEventListener;
+
+  constructor(public tourService: TourService, private eventBroker: EventBrokerService) {
     this.tourService.initialize([{
       anchorId: 'start.tour',
       content: 'Welcome to the Ngx-Tour tour!',
@@ -73,5 +79,21 @@ export class ConsoleComponent {
     }], {
       route: 'console',
     });
+
+    this.startTourListener = this.eventBroker.listen<boolean>("start-tour",(value:boolean)=>{
+      this.tourService.start();
+    });
+    this.nextStepListener = this.eventBroker.listen<boolean>("next-step",(value:boolean)=>{
+      this.tourService.next();
+    });
+    this.prevStepListener = this.eventBroker.listen<boolean>("prev-step",(value:boolean)=>{
+      this.tourService.prev();
+    });
+  }
+
+  public ngOnDestroy() {
+    this.startTourListener.ignore();
+    this.nextStepListener.ignore();
+    this.prevStepListener.ignore();
   }
 }

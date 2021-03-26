@@ -41,8 +41,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
       redirectTo: '',
       path: '**',
     }], {
-      useHash: false,
-      anchorScrolling: 'enabled',
+      useHash: true,
     }),
   ],
   providers: [

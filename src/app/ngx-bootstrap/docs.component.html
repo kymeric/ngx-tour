@@ -1,146 +1,179 @@
-<h2 id="installation"><span tourAnchor="installation">Installation</span></h2>
-<ol>
-  <li>
-    Install:
-    <pre><code [highlight]="codeInstall" [languages]="['bash']"></code></pre>
-  </li>
-  <li>Import
-    <code>TourNgxBootstrapModule.forRoot()</code> into your app module</li>
-  <li>Make sure
-    <code>RouterModule</code> is imported in your app module</li>
-  <li>Include bootstrap 4 CSS somehow - i.e. in your
-    <code>index.html</code> add this line:
-    <br>
-    <pre><code [highlight]="codeStyle" [languages]="['xml']"></code></pre>
-  </li>
-</ol>
+<div class="row flex-xl-nowrap">
+    <div class="d-none d-xl-block col-xl-2"></div>
 
-<h2 id="usage"><span tourAnchor="usage">Usage</span></h2>
-<ol>
-  <li>Add
-    <code>&lt;tour-step-template&gt;&lt;/tour-step-template&gt;</code> to your root app component</li>
-  <li>
-    Define anchor points for the tour steps by adding the
-    <code>tourAnchor</code> directive throughout your app.
-    <pre><code [highlight]="codeTourAnchor" [languages]="['xml']"></code></pre>
-  </li>
-  <li>
-    Define your tour steps using
-    <code>tourService.initialize(steps)</code>
-    <pre><code [highlight]="codeInitialize" [languages]="['typescript']"></code></pre>
-  </li>
-  <li>Start the tour with
-    <code tourAnchor="tourService.start">tourService.start()</code>
-  </li>
-  <li>Check out the
-    <a href="https://github.com/alvaro-octal/ngx-tour/tree/master/src/app/ngx-bootstrap">demo source code</a> for an example.</li>
-</ol>
+    <nav class="d-none d-xl-block col-xl-2 bd-toc">
+        <nav id="TableOfContents">
+            <ul>
+                <li><a routerLink="." (click)="scroll(anchorDemo)">Demo</a></li>
+                <li><a routerLink="." (click)="scroll(anchorInstallation)">Installation</a></li>
+                <li><a routerLink="." (click)="scroll(anchorUsage)">Usage</a></li>
+                <li><a routerLink="." (click)="scroll(anchorTourservice)">TourService</a></li>
+                <li><a routerLink="." (click)="scroll(anchorStepConfiguration)">Step Configuration</a></li>
+                <li><a routerLink="." (click)="scroll(anchorDefaults)">Defaults</a></li>
+                <li><a routerLink="." (click)="scroll(anchorHotkeys)">Hotkeys</a></li>
+                <li><a routerLink="." (click)="scroll(anchorEventObservables)">Event Observables</a></li>
+                <li><a routerLink="." (click)="scroll(anchorCustomTemplate)">Custom template</a></li>
+                <li><a routerLink="." (click)="scroll(anchorStylingActiveTourAnchor)">Styling Active Tour Anchor</a></li>
+            </ul>
+        </nav>
+    </nav>
 
-<h2 id="tourservice">TourService</h2>
-<p>The
-  <code>TourService</code> controls the tour. Some key functions include:</p>
-  <table class="table table-sm">
-    <tr *ngFor="let method of tourServiceMethods">
-        <td class="label-cell"><code>{{method.key}}</code></td>
-        <td class="content-cell">
-            <p class="signature">
-                <code [innerHTML]="method.description | keepHtml"></code>
-                <small class="text-muted"> =&gt; {{method.return_type}}</small>
-            </p>
-            <p class="description">{{method.description}}</p>
-        </td>
-    </tr>
-  </table>
+    <main class="col-md-9 col-xl-8 py-md-3 pl-md-5">
+        <h1>@ngx-tour/ngx-bootstrap <a href="https://badge.fury.io/js/%40ngx-tour%2Fngx-bootstrap"><img src="https://badge.fury.io/js/%40ngx-tour%2Fngx-bootstrap.svg" alt="npm version" height="18"></a></h1>
+        <p>
+          <code>TourNgxBootstrapModule</code> is an implementation of the tour UI that uses
+          <a href="https://github.com/valor-software/ngx-bootstrap">NgxBootstrap</a> popovers to display tour steps.
+        </p>
 
-<h2 id="step-configuration">Step Configuration</h2>
-<p>Each step can have the following properties.</p>
-<table class="table table-sm">
-  <ng-container *ngFor="let prop of stepConfigProperties">
-    <tr [tourAnchor]="prop.anchor">
-        <td class="label-cell">
-            <ng-container *ngIf="prop.del"><del><code>{{prop.name}}</code></del></ng-container>
-            <ng-container *ngIf="!prop.del"><code>{{prop.name}}</code></ng-container>
-        </td>
-        <td class="content-cell">
-            <p class="description" [innerHTML]="prop.description | keepHtml"></p>
-            <div class="meta">
-                <i>Type: </i>
-                <code>{{prop.prop_type}}</code>
-            </div>
-            <div class="meta" *ngIf="prop.default_value">
-                <i>Default: </i>
-                <code>{{prop.default_value}}</code>
-            </div>
-        </td>
-    </tr>
-  </ng-container>
-</table>
+        <h2 #anchorDemo>Demo</h2>
 
-<h2 id="defaults">Defaults</h2>
-<p>You can set default values in the
-  <code>TourService.initialize</code> function.</p>
-<pre><code [highlight]="codeInitializeDefaults" [languages]="['typescript']"></code></pre>
-<p>Any value explicitly defined in a step will override the default value.</p>
+        <button (click)="startTour()" class="btn btn-primary" tourAnchor="start.tour">Start Demo Tour</button>
 
-<h2 id="hotkeys"><span tourAnchor="hotkeys">Hotkeys</span></h2>
-<p>
-  Hotkeys are provided using Angular's
-  <code>@HostListener</code> decorator. Hotkeys are enabled when the tour starts and disabled when the tour ends.
-</p>
-<ul>
-  <li>
-    <strong>left arrow</strong>
-    <span> - previous step</span>
-  </li>
-  <li>
-    <strong>right arrow</strong>
-    <span> - next step</span>
-  </li>
-  <li>
-    <strong>esc</strong>
-    <span> - end tour</span>
-  </li>
-</ul>
-<p>
-  You can disable hotkeys by calling
-  <code>tourService.disableHotkeys()</code> or re-enable with
-  <code>tourService.enableHotkeys()</code>
-</p>
+        <h2 #anchorInstallation><span tourAnchor="installation">Installation</span></h2>
+        <ol>
+          <li>
+            Install:
+            <pre><code [highlight]="codeInstall" [languages]="['bash']"></code></pre>
+          </li>
+          <li>Import
+            <code>TourNgxBootstrapModule.forRoot()</code> into your app module</li>
+          <li>Make sure
+            <code>RouterModule</code> is imported in your app module</li>
+          <li>Include bootstrap 4 CSS somehow - i.e. in your
+            <code>index.html</code> add this line:
+            <br>
+            <pre><code [highlight]="codeStyle" [languages]="['xml']"></code></pre>
+          </li>
+        </ol>
 
-<h2 id="event-observables"><span tourAnchor="events">Event Observables</span></h2>
-<p>The
-  <code>TourService</code> emits events that can be subscribed to like this:</p>
-<pre><code [highlight]="codeEventObservables" [languages]="['typescript']"></code></pre>
-<table class="table table-sm">
-  <ng-container *ngFor="let prop of eventObservables">
-    <tr>
-        <td class="label-cell">
-            <code>{{prop.name}}</code>
-        </td>
-        <td class="content-cell">
-            <p class="description" [innerHTML]="prop.description | keepHtml"></p>
-            <div class="meta">
-                <i>Payload: </i>
-                <code>{{prop.payload}}</code>
-            </div>
-        </td>
-    </tr>
-  </ng-container>
-</table>
+        <h2 #anchorUsage><span tourAnchor="usage">Usage</span></h2>
+        <ol>
+          <li>Add
+            <code>&lt;tour-step-template&gt;&lt;/tour-step-template&gt;</code> to your root app component</li>
+          <li>
+            Define anchor points for the tour steps by adding the
+            <code>tourAnchor</code> directive throughout your app.
+            <pre><code [highlight]="codeTourAnchor" [languages]="['xml']"></code></pre>
+          </li>
+          <li>
+            Define your tour steps using
+            <code>tourService.initialize(steps)</code>
+            <pre><code [highlight]="codeInitialize" [languages]="['typescript']"></code></pre>
+          </li>
+          <li>Start the tour with
+            <code tourAnchor="tourService.start">tourService.start()</code>
+          </li>
+          <li>Check out the
+            <a href="https://github.com/alvaro-octal/ngx-tour/tree/master/src/app/ngx-bootstrap">demo source code</a> for an example.</li>
+        </ol>
 
-<h2 id="custom-template"><span tourAnchor="template">Custom template</span></h2>
-<p>
-  You can also customize the tour step template by providing an
-  <code>&lt;ng-template let-step="step" &gt;</code> inside the
-  <code>&lt;tour-step-template&gt;</code>
-</p>
-<p>
-  The default template is equivalent to this:
-</p>
-<pre><code [highlight]="codeTemplate" [languages]="['xml']"></code></pre>
+        <h2 #anchorTourservice>TourService</h2>
+        <p>The
+          <code>TourService</code> controls the tour. Some key functions include:</p>
+          <table class="table table-sm">
+            <tr *ngFor="let method of tourServiceMethods">
+                <td class="label-cell"><code>{{method.key}}</code></td>
+                <td class="content-cell">
+                    <p class="signature">
+                        <code [innerHTML]="method.description | keepHtml"></code>
+                        <small class="text-muted"> =&gt; {{method.return_type}}</small>
+                    </p>
+                    <p class="description">{{method.description}}</p>
+                </td>
+            </tr>
+          </table>
 
-<h2 id="styling-active-tour-anchor">Styling Active Tour Anchor</h2>
-<p>
-  The currently active tour anchor element has a
-  <code>touranchor--is-active</code> class applied to it, so you can apply your own custom styles to that class to highlight the element being referenced.
-</p>
+        <h2 #anchorStepConfiguration>Step Configuration</h2>
+        <p>Each step can have the following properties.</p>
+        <table class="table table-sm">
+          <ng-container *ngFor="let prop of stepConfigProperties">
+            <tr [tourAnchor]="prop.anchor">
+                <td class="label-cell">
+                    <ng-container *ngIf="prop.del"><del><code>{{prop.name}}</code></del></ng-container>
+                    <ng-container *ngIf="!prop.del"><code>{{prop.name}}</code></ng-container>
+                </td>
+                <td class="content-cell">
+                    <p class="description" [innerHTML]="prop.description | keepHtml"></p>
+                    <div class="meta">
+                        <i>Type: </i>
+                        <code>{{prop.prop_type}}</code>
+                    </div>
+                    <div class="meta" *ngIf="prop.default_value">
+                        <i>Default: </i>
+                        <code>{{prop.default_value}}</code>
+                    </div>
+                </td>
+            </tr>
+          </ng-container>
+        </table>
+
+        <h2 #anchorDefaults>Defaults</h2>
+        <p>You can set default values in the
+          <code>TourService.initialize</code> function.</p>
+        <pre><code [highlight]="codeInitializeDefaults" [languages]="['typescript']"></code></pre>
+        <p>Any value explicitly defined in a step will override the default value.</p>
+
+        <h2 #anchorHotkeys><span tourAnchor="hotkeys">Hotkeys</span></h2>
+        <p>
+          Hotkeys are provided using Angular's
+          <code>@HostListener</code> decorator. Hotkeys are enabled when the tour starts and disabled when the tour ends.
+        </p>
+        <ul>
+          <li>
+            <strong>left arrow</strong>
+            <span> - previous step</span>
+          </li>
+          <li>
+            <strong>right arrow</strong>
+            <span> - next step</span>
+          </li>
+          <li>
+            <strong>esc</strong>
+            <span> - end tour</span>
+          </li>
+        </ul>
+        <p>
+          You can disable hotkeys by calling
+          <code>tourService.disableHotkeys()</code> or re-enable with
+          <code>tourService.enableHotkeys()</code>
+        </p>
+
+        <h2 #anchorEventObservables><span tourAnchor="events">Event Observables</span></h2>
+        <p>The
+          <code>TourService</code> emits events that can be subscribed to like this:</p>
+        <pre><code [highlight]="codeEventObservables" [languages]="['typescript']"></code></pre>
+        <table class="table table-sm">
+          <ng-container *ngFor="let prop of eventObservables">
+            <tr>
+                <td class="label-cell">
+                    <code>{{prop.name}}</code>
+                </td>
+                <td class="content-cell">
+                    <p class="description" [innerHTML]="prop.description | keepHtml"></p>
+                    <div class="meta">
+                        <i>Payload: </i>
+                        <code>{{prop.payload}}</code>
+                    </div>
+                </td>
+            </tr>
+          </ng-container>
+        </table>
+
+        <h2 #anchorCustomTemplate><span tourAnchor="template">Custom template</span></h2>
+        <p>
+          You can also customize the tour step template by providing an
+          <code>&lt;ng-template let-step="step" &gt;</code> inside the
+          <code>&lt;tour-step-template&gt;</code>
+        </p>
+        <p>
+          The default template is equivalent to this:
+        </p>
+        <pre><code [highlight]="codeTemplate" [languages]="['xml']"></code></pre>
+
+        <h2 #anchorStylingActiveTourAnchor>Styling Active Tour Anchor</h2>
+        <p>
+          The currently active tour anchor element has a
+          <code>touranchor--is-active</code> class applied to it, so you can apply your own custom styles to that class to highlight the element being referenced.
+        </p>
+    </main>
+</div>

@@ -4,8 +4,8 @@
     <nav class="d-none d-xl-block col-xl-2 bd-toc">
         <nav id="TableOfContents">
             <ul>
-                <li><a routerLink="./" fragment="about">About</a></li>
-                <li><a routerLink="./" fragment="implementatoins">Implementations</a></li>
+                <li><a routerLink="." (click)="scroll(anchorAbout)">About</a></li>
+                <li><a routerLink="." (click)="scroll(anchorImplementations)">Implementations</a></li>
             </ul>
         </nav>
     </nav>
@@ -15,13 +15,13 @@
 
         <p>Product tour using Angular (2+)</p>
 
-        <h2 id="about">About</h2>
+        <h2 #anchorAbout>About</h2>
 
         <p>This is a product tour library built with Angular (2+). It's inspired by
           <a href="http://benmarch.github.io/angular-ui-tour">angular-ui-tour</a>.
         </p>
 
-        <h2 id="implementation">Implementations</h2>
+        <h2 #anchorImplementations>Implementations</h2>
 
         <p>The core functionality of this tour package is implemented in <code>@ngx-tour/core</code> (<a href="https://badge.fury.io/js/%40ngx-tour%2Fcore"><img src="https://badge.fury.io/js/%40ngx-tour%2Fcore.svg" alt="npm version" height="18"></a>).</p>
 

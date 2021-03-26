@@ -1,13 +1,17 @@
 import { TourService } from '@ngx-tour/ngx-popper';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
+
+import { EventBrokerService, IEventListener } from './../util/services/event-broker.service';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'ngx-popper-route',
   templateUrl: './ngx-popper.component.html',
 })
-export class NgxPopperComponent {
-  constructor(public tourService: TourService) {
+export class NgxPopperComponent implements OnDestroy {
+  private startTourListener: IEventListener;
+
+  constructor(public tourService: TourService, private eventBroker: EventBrokerService) {
     this.tourService.initialize([{
       anchorId: 'start.tour',
       content: 'Welcome to the Ngx-Tour tour!',
@@ -75,10 +79,16 @@ export class NgxPopperComponent {
       prevBtnTitle: 'My Prev',
       nextBtnTitle: 'My Next',
       endBtnTitle: 'My End'
-    }],
-      {
+    }], {
         route: 'ngx-popper',
-      }
-    );
+    });
+
+    this.startTourListener = this.eventBroker.listen<boolean>("start-tour",(value:boolean)=>{
+      this.tourService.start();
+    });
+  }
+
+  public ngOnDestroy() {
+    this.startTourListener.ignore();
   }
 }
