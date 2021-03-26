@@ -18,12 +18,14 @@
         <h2 id="about">About</h2>
 
         <p>This is a product tour library built with Angular (2+). It's inspired by
-          <a href="http://benmarch.github.io/angular-ui-tour">angular-ui-tour</a>.
+            <a href="http://benmarch.github.io/angular-ui-tour">angular-ui-tour</a>.
         </p>
 
         <h2 id="implementation">Implementations</h2>
 
-        <p>The core functionality of this tour package is implemented in <code>@ngx-tour/core</code> (<a href="https://badge.fury.io/js/%40ngx-tour%2Fcore"><img src="https://badge.fury.io/js/%40ngx-tour%2Fcore.svg" alt="npm version" height="18"></a>).</p>
+        <p>The core functionality of this tour package is implemented in <code>@ngx-tour/core</code> (<a
+                href="https://badge.fury.io/js/%40ngx-tour%2Fcore"><img
+                    src="https://badge.fury.io/js/%40ngx-tour%2Fcore.svg" alt="npm version" height="18"></a>).</p>
 
         <p>There are multiple implementations of the <code>@ngx-tour</code>:</p>
 
@@ -34,5 +36,12 @@
             <li><a [routerLink]="['/ngx-popper']">@ngx-tour/ngx-popper</a></li>
             <li><a [routerLink]="['/console']">@ngx-tour/console</a></li>
         </ul>
+
+        <div class="alert alert-warning" role="alert">
+            <i>NOTE: </i><b>TourService</b> is exported by <b>@ngx-tour/core</b> and each of the implementations export
+            a more specialized version. When using <b>@ngx-tour</b> across multiple modules, ensure that your imports
+            all reference the implementation-specific <b>TourService</b> or you will get two different instances of
+            <b>TourService</b> injected and each will have a different configuration/steps/etc...
+        </div>
     </main>
 </div>
